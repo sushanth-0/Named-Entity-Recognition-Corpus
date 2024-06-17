@@ -53,8 +53,8 @@ jobs:
     machine: true
     resource_class: Sushanth / Named-Entity-Recognition_Project
     environment:
-      REPOSITORY: ner-bert
-      GAR_IMAGE_NAME: ner-bert
+      REPOSITORY: Named-Entity-Recognition_Project
+      GAR_IMAGE_NAME: Named-Entity-Recognition_Project
       IMAGE_TAG: latest
     steps:
       - run:
