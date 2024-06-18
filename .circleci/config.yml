@@ -51,10 +51,10 @@ jobs:
 
   continuous-deployment:
     machine: true
-    resource_class: Sushanth / Named-Entity-Recognition_Project
+    resource_class: Sushanth / ner-bert
     environment:
-      REPOSITORY: Named-Entity-Recognition_Project
-      GAR_IMAGE_NAME: Named-Entity-Recognition_Project
+      REPOSITORY: ner-bert
+      GAR_IMAGE_NAME: ner-bert
       IMAGE_TAG: latest
     steps:
       - run:
