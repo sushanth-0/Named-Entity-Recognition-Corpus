@@ -51,7 +51,7 @@ jobs:
 
   continuous-deployment:
     machine: true
-    resource_class: Sushanth / ner-bert
+    resource_class: sushanth/ner-bert
     environment:
       REPOSITORY: ner-bert
       GAR_IMAGE_NAME: ner-bert
