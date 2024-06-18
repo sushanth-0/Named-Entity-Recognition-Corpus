@@ -52,6 +52,7 @@ jobs:
   continuous-deployment:
     machine: true
     resource_class: sushanth/ner
+    environment:
       REPOSITORY: ner-bert
       GAR_IMAGE_NAME: ner-bert
       IMAGE_TAG: latest
