@@ -1,7 +1,7 @@
-<div>
-  <h1 align="center">Named Entity Recognition (NER) using BERT</h1>
+<div align="center">
+  <h1>Named Entity Recognition (NER) using BERT</h1>
 
-  <p align="center">
+  <p>
     An end-to-end NLP pipeline to perform named entity recognition (NER) using a pre-trained HuggingFace Transformer, BERT, and deploy to Google Cloud Platform (GCP) with Docker and CircleCI.
   </p>
 </div>
@@ -15,24 +15,12 @@
         <li><a href="#tech-stack">Tech Stack</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#how-to-run">How to Run</a>
-    </li>
-    <li>
-      <a href="#training-pipeline">Training Pipeline</a>
-    </li>
-    <li>
-      <a href="#prediction-pipeline">Prediction Pipeline</a>
-    </li>
-    <li>
-      <a href="#deployment">Deployment</a>
-    </li>
-    <li>
-      <a href="#workflow">Workflow</a>
-    </li>
-    <li>
-      <a href="#gcp-cicd-deployment-with-circleci">GCP CI/CD Deployment with CircleCI</a>
-    </li>
+    <li><a href="#how-to-run">How to Run</a></li>
+    <li><a href="#training-pipeline">Training Pipeline</a></li>
+    <li><a href="#prediction-pipeline">Prediction Pipeline</a></li>
+    <li><a href="#deployment">Deployment</a></li>
+    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="#gcp-cicd-deployment-with-circleci">GCP CI/CD Deployment with CircleCI</a></li>
   </ol>
 </details>
 
@@ -60,9 +48,11 @@ Instructions to set up your local environment for running the project.
 
 ```bash
 git clone https://github.com/yourusername/yourproject.git
+
 cd yourproject
 # Set up a virtual environment
 python3 -m venv venv
+
 source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
@@ -117,13 +107,6 @@ python app.py
 4. **Web Application**:
    - Built a basic web app using FastAPI to expose the model's prediction functionality.
 
-### Export the Environment Variables
-
-```bash
-export GCP_BUCKET_NAME="your-gcp-bucket-name"
-export GCP_PROJECT_ID="your-gcp-project-id"
-export GCP_CREDENTIALS="path/to/your/credentials.json"
-```
 
 ## GCP CI/CD Deployment with CircleCI
 

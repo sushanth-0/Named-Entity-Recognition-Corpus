@@ -43,43 +43,43 @@ jobs:
 
       - run:
           name: configure docker login
-          command: gcloud auth configure-docker $GOOGLE_COMPUTE_ZONE-docker.pkg.dev
+          command: gcloud auth configure-docker us-east1-docker.pkg.dev
 
       - run:
           name: push to private repository
           command: docker push us-east1-docker.pkg.dev/subtle-breaker-426711-e5/ner-bert/ner-bert:latest
 
   continuous-deployment:
-    machine: true
-    resource_class: sushanth/ner
+    machine:
+      image: ubuntu-2004:202101-01
+    resource_class: medium
     environment:
       REPOSITORY: ner-bert
       GAR_IMAGE_NAME: ner-bert
       IMAGE_TAG: latest
     steps:
+      - checkout
       - run:
           name: google cloud authentication
-          command: 
+          command: |
             echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
       - run:
           name: configure docker login
-          command: gcloud auth configure-docker $GOOGLE_COMPUTE_ZONE-docker.pkg.dev
+          command: gcloud auth configure-docker us-east1-docker.pkg.dev
 
       - run:
           name: pull image from private repository
           command: docker pull us-east1-docker.pkg.dev/subtle-breaker-426711-e5/ner-bert/ner-bert:latest
         
       - run:
-          name: Start Docker container
+          name: start docker container
           command: docker run -d -p 80:8080 us-east1-docker.pkg.dev/subtle-breaker-426711-e5/ner-bert/ner-bert:latest
 
       - run:
           name: free up system space
           command: docker system prune -f
-
-      
 
 workflows:
   CICD:
@@ -93,11 +93,10 @@ workflows:
       - sanity-check:
           type: approval
           requires:
-          - continuous-delivery
+            - continuous-delivery
 
       - continuous-deployment:
           requires:
             - sanity-check
             - continuous-integration
             - continuous-delivery
-            
